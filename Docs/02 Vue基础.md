@@ -30,14 +30,13 @@
 * 项目结构
 
   * node_modules：用于存放项目依赖包
-  * public：
+  * public：公共资源，打包时不会被编译
   * src
-    * assets
-    * components
-    * App.vue
-    * main.js
-  * .gitignore
-  * package.json
+    * assets： 放置图片、文件等资源，打包时会被编译
+    * components：放置组件，即 .vue 文件
+    * App.vue：入口组件
+    * main.js：入口 js 文件
+  * package.json：项目依赖管理
 
 * 运行项目
 
@@ -99,6 +98,9 @@
   <img src="images\dist目录.png" style="zoom:60%;" />
 
 * dist 目录里包含了完整的、优化且压缩过的应用代码
+  * **单页应用**：只有一个页面 `index.html`
+  * 所有的组件、逻辑、资源（如图片）依赖都被打包进 `js` 下面的 `.js` 文件中
+  * 尺寸很小：去掉没有使用的包以后，只有 `500KB`
 * 可以将这里 dist 目录里的代码部署到 HTTP 服务器上
   * 下载 nginx：http://nginx.org/en/download.html
   * 把下载后的 zip 文件解压到任意目录，比如 `D:\nginx`
@@ -110,3 +112,18 @@
 ## 单页应用
 
 * SPA：Single Page Application
+* 只有一个页面
+* 优点：
+  * 只需要一次下载，对服务器压力小
+  * 内容的改变不需要重新加载整个页面
+* 缺点：
+  * 不利于搜索引擎优化（SEO：Search Engine Optimization）
+  * 初次加载比较耗时
+
+## 练习
+
+* 修改 Counter 应用，增加以下功能
+  * 添加一个按钮，按按一次，`counter` 值减 1
+  * 当 `counter` 值大于 10，则把对应的数字用红色显示
+* 除了 Vue 之外，还有 React、Angular 等类似框架，找一些资料进行了解。建议编写一个简单应用（如 Counter 应用）体验一下。
+* 欢迎大家贡献更多有趣的练习
