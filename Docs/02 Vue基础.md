@@ -51,7 +51,7 @@
 
   * 打开浏览器，输入 http://localhost:8080，应该会看到如下内容
 
-    <img src="默认vue页面.png" style="zoom:33%;" />
+    <img src="images\默认vue页面.png" style="zoom:33%;" />
 
 ## 修改应用
 
@@ -84,7 +84,7 @@
 
 * 打开浏览器，执行效果为
 
-  <img src="counter截图.png" style="zoom:66%;" />
+  <img src="images\counter截图.png" style="zoom:66%;" />
 
 ## 部署应用
 
@@ -92,11 +92,11 @@
 
 * 打开 package.json，点击 build 前面的绿色按钮，然后选择 "run build"
 
-  <img src="运行vue.png" style="zoom:33%;" />
+  <img src="images\运行vue.png" style="zoom:33%;" />
 
 * build 结束后，将会在工程根目录下多出一个 dist 目录
 
-  <img src="dist目录.png" style="zoom:60%;" />
+  <img src="images\dist目录.png" style="zoom:60%;" />
 
 * dist 目录里包含了完整的、优化且压缩过的应用代码
 * 可以将这里 dist 目录里的代码部署到 HTTP 服务器上
