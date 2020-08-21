@@ -45,7 +45,7 @@
 
   * 点击 "serve": "vue-cli-service serve"
 
-    <img src="运行vue.png" style="zoom:33%;" />
+    <img src="images\运行vue.png" style="zoom:33%;" />
 
   * 待启动成功后，观察控制台的输出
 
