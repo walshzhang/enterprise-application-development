@@ -1,26 +1,16 @@
 <template>
   <div>
-    <counter style="margin-right: 5px; "/>
-    <counter />
+    <navbar style="margin-bottom: 20px; "/>
+    <div style="border: solid gray 2px; padding: 20px; ">
+      <router-view />
+    </div>
   </div>
 </template>
 <script>
-const counter = {
-  data() {
-    return {count: 0};
-  },
-  template: `
-    <button @click="inc">我被点击了 {{ count }} 次</button>`,
-  methods: {
-    inc() {
-      this.count++;
-    }
-  }
-};
-
+import Navbar from './components/Navbar'
 export default {
   components: {
-    counter
+    Navbar
   }
 }
 </script>
