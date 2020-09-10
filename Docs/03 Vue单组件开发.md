@@ -125,17 +125,10 @@
 
 #### v-bind 指令
 
-* 用于向子组件传递值，后面会讲到
-
-  ```vue
-  <!-- baby 是子组件名字 -->
-  <template>
-    <baby v-bind:name="张三"
-          v-bind:birthday="2020-08-20" />
-  </template> 
-  ```
-
 * 用于计算 html 属性值
+
+  * 加上 v-bind 后，Vue 会把 `html` 属性的值当作 `javascript` 表达式对待
+  * 如果没有加 `v-bind` ，html 属性的值只会被当作普通的字符串处理
 
   ```vue
   <template>
