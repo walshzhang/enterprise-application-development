@@ -199,4 +199,92 @@ var store = {
 * 组件可以使用共享状态，也可以有自己的私有状态
 
   <img src="images\store 模式.png" style="zoom:60%;" />
+
   * 组件不能直接修改共享状态，而应执行 actions 来分发事件通知 store 去改变
+
+### Vuex 核心概念：State
+
+* **单一状态树**：每个应用仅包含唯一一个 store 实例
+
+  * 保持响应式：一旦 store 中的状态发生变化，将更新所有组件的 DOM
+
+* 在 Vue 组件中获得 Vuex 状态
+
+  * 使用计算属性
+
+    * **问题**：每个组件都直接依赖了全局状态
+
+    ```vue
+    const Counter = {
+      template: `<div>{{ count}}</div>`,
+      computed: { count() { return store.state.count; } }
+    }
+    ```
+
+  * 从根组件向子组件注入状态
+
+    * 从根组件注册 store：`const app = new Vue({ store })`
+    * 子组件中通过 `this.$store` 进行访问
+    * **问题**：当一个组件需要多个状态时，这些计算属性会显得重复和冗余
+
+    ```vue
+    const Counter = {
+      template: `<div>{{ count}}</div>`,
+      computed: { count() { return this.$store.state.count; } }
+    }
+    ```
+
+  * 使用 `mapState` 函数
+
+    ```javascript
+    import { mapState } from 'vuex'
+    
+    const Counter = {
+      template: `<div>{{ count}}</div>`,
+      computed: mapState({
+        count: state => state.count
+      })
+    }
+    ```
+
+    * 如果计算属性的名称与 state 的属性名相同
+
+    ```javascript
+    const Counter = {
+      template: `<div>{{ count}}</div>`,
+      computed: mapState([
+        // 映射 this.count 到 store.state.count
+        'count'
+      ])
+    }
+    ```
+
+    * mapState 函数返回的是一个对象，如何与局部计算属性混合使用呢
+      * 使用扩展运算符
+
+    ```javascript
+    const Counter = {
+      template: `<div>{{ count}}</div>`,
+      computed: {
+        ...mapState([
+          // 映射 this.count 到 store.state.count
+          'count'
+        ]),
+        localComputed() { ... }
+      }
+    }
+    ```
+
+### Vuex 核心概念：Getter
+
+* 从 store 的 state 中派生出一些状态
+
+  ```javascript
+  computed: {
+    doneTodosCount() {
+       return this.$store.state.todos.filter(todo => todo.done).length;
+    }
+  }
+  ```
+
+  
