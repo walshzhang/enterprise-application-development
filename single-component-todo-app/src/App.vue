@@ -17,7 +17,7 @@
           <th style="width: 50px;">操作</th>
         </tr>
         </thead>
-        <tbody v-if="items.length">
+        <tbody v-if="itemsInTable.length">
         <tr v-for="item in itemsInTable" :key="item.id">
           <td><label><input type="checkbox"
                             v-model="item.done"/></label></td>
