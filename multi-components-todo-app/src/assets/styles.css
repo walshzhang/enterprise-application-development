@@ -1,0 +1,33 @@
+.app-center {
+    width: 600px;
+    margin: 0 auto;
+}
+
+.todo-input {
+    width: 100%;
+    outline-style: none;
+    border: solid 1px #ccc;
+    border-radius: 4px;
+    line-height: 30px;
+    padding: 0 5px;
+}
+
+.todo-table {
+    width: 100%;
+    line-height: 30px;
+    text-align: center;
+    border-collapse: collapse;
+    border-top: solid 1px #ccc;
+}
+
+.todo-table thead tr {
+    border-bottom: solid 2px #dee2e6;
+}
+
+.todo-table tbody tr {
+    border-bottom: solid 1px #dee2e6;
+}
+
+.mb30 {
+    margin-bottom: 30px;
+}
