@@ -38,8 +38,98 @@
 
 <img src="images\Counter 组件示例.png" style="zoom:67%;" />
 
-* 可以复用
+* 可以复用，同一组件的不同实例互不影响
 * 增强语义：`<div id="counter">` VS `<counter >`
+
+## 多组件开发基础
+
+* 每个组件一个文件，以后缀 `.vue` 结尾，一般放在 `src\components` 目录下
+* 组件文件名一般即为组件的名字，使用驼峰式命名规则，如 `Counter.vue`，`ItemCounter.vue`
+
+### 父组件，子组件
+
+* 假如有两个组件 A, B. 在 `B` 组件中使用了 `A` 组件，两个文件内容
+* 组件 B 称为 组件 A 的父组件
+  * 父组件需要引入子组件模块：`import AComponent from './A'`
+  * 父组件需要声明 `components` 属性，`components: { AComponent, CComponent }`
+* 组件 A 称为 组件 B 的子组件
+
+```vue
+<!-- A.vue -->
+<template>
+   <h1>Component A</h1>
+</template>
+
+<!-- B.vue -->
+<template>
+  <div>
+    <a-component v-for="i in [1, 2]" :key="i"/>
+  </div>
+</template>
+
+<script>
+import AComponent from './A'
+export default {
+  components: { AComponent }
+}
+</script>
+```
+
+![](images\父-子组件.png)
+
+### 父组件向子组件传递属性
+
+* 子组件根据传入的值进行不同的计算和渲染
+* 大部分场景下，都需要向子组件传递属性，以达到复用的目的
+* 子组件：
+  * 使用 `props` 数组接收父组件传递的属性
+  * `prop` 属性与 `data` 方法生成的属性在用法上完全相同
+    * 模板与指令语法相同，如 `v-for="item in items"`，`{{ name }}` 等
+    * 在 `<script>` 中使用要加 `this`，如 `this.items`
+* 父组件：
+  * 准备往子组件传递的属性值，如 `:items="user.items"`，`:name="user.name"`
+
+```vue
+<!-- 子组件：Child.vue -->
+<template>
+   <div>
+       <h3>{{ name }} 共有 {{ count }} 条待办事项</h3>
+       <ul>
+           <li v-for="item in items" :key="item.id"> {{ item.text }} </li>
+       </ul>
+   </div>
+</template>
+<script>
+    export default {
+        props: ['name', 'items'],
+        computed: {
+            count() {
+                return this.items.length
+            }
+        }
+    }
+</script>
+<!-- 父组件：Parent.vue -->
+<template>
+    <div>
+        <child :items="user.items" :name="user.name" />
+    </div>
+</template>
+<script>
+    import Child from './Child'
+    
+    export default {
+        components: { Child },
+        data() {
+            return {
+                user: { name: 'zhangsan', items: [{id: 1, text: '好好学习'}， {id: 2, text: "天天向上" }] }
+            }
+        }
+    }
+</script>
+```
+
+<img src="images\向子组件传递属性.png"/>
 
 ## 路由：Vue-Router
 
