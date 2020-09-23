@@ -122,10 +122,16 @@ export default {
         components: { Child },
         data() {
             return {
-                user: { name: 'zhangsan', items: [{id: 1, text: '好好学习'}， {id: 2, text: "天天向上" }] }
+                user: { 
+                  name: 'zhangsan', 
+                  items: [
+                    {id: 1, text: '好好学习'}， 
+                    {id: 2, text: "天天向上" }
+                  ]
             }
         }
     }
+  }
 </script>
 ```
 
@@ -134,6 +140,7 @@ export default {
 ## 路由：Vue-Router
 
 * 没有路由之前：通过组合组件来组成应用
+* 页面地址始终为 index.html，无法显示与内容有关的具体路径
 
 ```vue
 <template>
@@ -292,7 +299,7 @@ var store = {
 
   * 组件不能直接修改共享状态，而应执行 actions 来分发事件通知 store 去改变
 
-### Vuex 核心概念：State
+### *Vuex 核心概念：State
 
 * **单一状态树**：每个应用仅包含唯一一个 store 实例
 
