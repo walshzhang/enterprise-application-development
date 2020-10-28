@@ -86,7 +86,7 @@ export default {
       }
     }
   },
-  created() {
+  created() { // Vue 实例被显示到页面之前，组件的生命周期
     this.items = JSON.parse(localStorage.getItem('todos')) || []
   },
   methods: {

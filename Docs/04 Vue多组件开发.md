@@ -63,7 +63,7 @@
 <!-- B.vue -->
 <template>
   <div>
-    <a-component v-for="i in [1, 2]" :key="i"/>
+    <a-component v-for="i in [1, 2]" :key="i" />
   </div>
 </template>
 
@@ -125,7 +125,7 @@ export default {
                 user: { 
                   name: 'zhangsan', 
                   items: [
-                    {id: 1, text: '好好学习'}， 
+                    {id: 1, text: '好好学习'}, 
                     {id: 2, text: "天天向上" }
                   ]
             }

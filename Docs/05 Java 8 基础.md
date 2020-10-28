@@ -90,7 +90,7 @@
 
 *  `java.util.function` 包提供了许多函数式接口
 
-  ![](C:\Users\walsh\Desktop\Teach\J2EE\enterprise-application-development\Docs\images\java 内置的函数式接口.png)
+  ![](images\java 内置的函数式接口.png)
 
   * 有了这些接口，我们就无需要再定义接口
   * 如可以用 `Predicate` 替代前面的 `AppleFilter`
